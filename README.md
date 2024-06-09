@@ -1,2 +1,0 @@
-# corporate-web
-Web page.
