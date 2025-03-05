@@ -1,222 +1,256 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>singularitya</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Singularitya</title>
+    
+    <style>
+        @font-face {
+            font-family: 'Sansation';
+            src: url('sansation/Sansation_Regular.ttf') format('truetype');
+        }
 
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro">Singularitya</a></li>
-							<li><a href="#one">Who we are</a></li>
-							<li><a href="#two">What we do</a></li>
-							<li><a href="#three">Contact</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>
+        @keyframes neon {
+            0% {
+                text-shadow: 0 0 5px #070707, 0 0 10px #cccccc, 0 0 20px #cccccc, 0 0 40px #ffffff, 0 0 80px #ffffff;
+                color: #cccccc;
+            }
+            25% {
+                text-shadow: 0 0 5px #bbbbbb, 0 0 10px #bbbbbb, 0 0 20px #bbbbbb, 0 0 40px #eeeeee, 0 0 80px #eeeeee;
+                color: #bbbbbb;
+            }
+            50% {
+                text-shadow: 0 0 5px #aaaaaa, 0 0 10px #aaaaaa, 0 0 20px #aaaaaa, 0 0 40px #dddddd, 0 0 80px #dddddd;
+                color: #aaaaaa;
+            }
+            75% {
+                text-shadow: 0 0 5px #999999, 0 0 10px #999999, 0 0 20px #999999, 0 0 40px #cccccc, 0 0 80px #cccccc;
+                color: #999999;
+            }
+            100% {
+                text-shadow: 0 0 5px #cccccc, 0 0 10px #cccccc, 0 0 20px #cccccc, 0 0 40px #ffffff, 0 0 80px #ffffff;
+                color: #cccccc;
+            }
+        }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
-			</section>		
-			<!-- Intro -->
-				<section id="intro" class="wrapper style1 fullscreen fade-up">
-					<div class="inner">
-							<video autoplay muted loop id="videoBackground" playsinline>
-									<source src="background.mp4" type="video/mp4">
-									Your browser does not support the video tag.
-							</video>
-							<h1>Singularitya</h1>
-							<p>Conversational AI for everyone.<br>Because good companions always inspire us.</p>
-					</div>
-				</section>		
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: black;
+            color: #fff;
+            font-family: 'Sansation', Arial, sans-serif;
+        }
+        .top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-image {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: 'Sansation', Arial, sans-serif;
 
-				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>About Us</h2>
-									<p>At Singularitya, we redefine digital communication by crafting conversational AI that adapts
-										 uniquely to every individual. Our technology focuses on conversational memory management and 
-										 learning from each client's data to ensure every interaction is personalized and meaningful.</p>
-										<!-- <ul class="actions">
-												<li><a href="generic.html" class="button">Learn more</a></li>
-										</ul> -->
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Why Us?</h2>
-									<p>Our AI doesn't just respond; it remembers and learns, making every conversation smarter and more intuitive. 
-										With Singularitya, experience a chatbot that truly understands and grows with you</p>
-									<!-- <ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
-									</ul> -->
-								</div>
-							</div>
-						</section>
-						
-					</section>
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .content {
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            animation: neon 10s infinite alternate;
+        }
+        .slogan {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            animation: neon 10s infinite alternate;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        #videoBackground {
+            width: 80%;
+            max-width: 800px;
+            max-height: 80%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+				.footer {
+									position: fixed;
+									bottom: 0;
+									left: 0;
+									width: 100%;
+									padding: 15px 20px;
+									background-color: rgba(0,0,0,0.7);
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									z-index: 10;
+							}
 
-				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>What we do</h2>
-							<p>At Singularitya, we specialize in creating bespoke conversational systems tailored 
-								to the unique needs of each client. Our systems are designed to seamlessly integrate
-								 into your business processes, enhancing your customer service and engagement through 
-								 sophisticated and intuitive interactions. Each solution is meticulously crafted to 
-								 understand and respond to user queries effectively, ensuring a natural and engaging
-								  experience.
-								</p>
-								<section>
-									<p>Our approach involves close collaboration with our users to understand their specific
-										 requirements and challenges. This enables us to design conversational agents that are
-										  not only technologically advanced but also finely tuned to the nuances of your 
-											business sector. Whether you are looking to improve customer support, streamline operations,
-											 or gain valuable insights from user interactions, our custom conversational systems are here
-											  to help you achieve your goals.
-												<br>
-												<br>
-												<br>
-												<br>
-												<br>
-												<br>
-												<br>
-									</p>
-								</section>
-							<!--
-							<div class="features">
-								<section>
-									<span class="icon solid major fa-code"></span>
-									<h3>Lorem ipsum amet</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-lock"></span>
-									<h3>Aliquam sed nullam</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-cog"></span>
-									<h3>Sed erat ullam corper</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-desktop"></span>
-									<h3>Veroeros quis lorem</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-link"></span>
-									<h3>Urna quis bibendum</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon major fa-gem"></span>
-									<h3>Aliquam urna dapibus</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-							</div>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn more</a></li>
-							</ul>
-						</div>-->
-					</section>
+			.social-icons {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 20px;
+					flex-grow: 1;
+			}
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Contact</h2>
-							<p>We value open communication and are here to answer any questions you may have. 
-								Whether you're curious about our services, need support, or want to share your feedback, 
-								we're just a message away.</p>
-							<div class="split style1">
-								<section>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Address</h3>
-											<!--<span>12345 Somewhere Road #654<br />-->
-												<span><br />
-											São Paulo, SP 00000-0000<br />
-											Brazil</span>
-										</li>
-										<li>
-											<h3>Email</h3>
-											<a href="#">contact@singularitya.com</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>(+55)11 91307-103</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-											</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section>
+			.social-icons a {
+					color: white;
+					font-size: 1.2rem;
+					text-decoration: none;
+					transition: color 0.3s ease;
+			}
 
+			.social-icons a:hover {
+					color: #00ffff;
+			}
+
+			.copyright {
+					position: absolute;
+					right: 20px;
+					bottom: 10px; /* Adicionado para evitar que fique colado ao topo */
+					font-size: 12px;
+					color: #ccc;
+					margin-right: 30px; /* Corrigido: adicionado 'px' para a margem funcionar */
+					
+			}
+
+			.new-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 50px 0;
+}
+
+.section-content {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 190px;
+}
+
+/* Removi o background e efeitos da caixa cinza */
+.image-container {
+    width: 100%;
+    max-width: 1200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.section-image {
+    max-width: 60%;
+    max-height: 100vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+	<div class="top-bar">
+			<div class="logo-container">
+					<img src="logo.svg" alt="Logo" class="logo-image">
+					<div class="logo-text">SINGULARITYA</div>
 			</div>
+	</div>
 
-		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; singularitya. All rights reserved.</li><li>Design: <a href="http://html5up.net">Blog</a></li>
-					</ul>
-				</div>
-			</footer>
+	<div class="container">
+			<div class="content">
+					<p class="slogan">
+							Conversational AI for Everyone.
+					</p>
+			</div>
+			
+			<div class="video-wrapper">
+					<video autoplay muted loop id="videoBackground" playsinline>
+							<source src="background.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+					</video>
+			</div>
+			<div class="overlay"></div>
+	</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<div class="new-section">
+    <div class="section-content">
+        <div class="image-container">
+            <img src="banner.png" alt="Singularitya AI Image" class="section-image">
+        </div>
+    </div>
+</div>
 
-	</body>
-</html>
+	<footer class="footer">
+			<div class="social-icons">
+					<a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+					<a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+					<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+					<a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+					<a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+			</div>
+			<p class="copyright">© 2025 <strong>Singularitya</strong>, All rights reserved.</p>
+	</footer>
+</body>
