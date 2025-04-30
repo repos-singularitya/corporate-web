@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="favicon_io/site.webmanifest">
-    
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Singularitya</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
-        @font-face {
-            font-family: 'Sansation';
-            src: url('sansation/Sansation_Regular.ttf') format('truetype');
-        }
 
         @keyframes neon {
             0% {
@@ -39,41 +34,75 @@
             }
         }
 
-        body, html {
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
             margin: 0;
             padding: 0;
-            height: 100%;
-            background-color: black;
-            color: #fff;
-            font-family: 'Sansation', Arial, sans-serif;
         }
-        .top-bar {
-            position: absolute;
+
+        header {
+            position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            padding: 15px;
-            z-index: 10;
+            padding: 25px 45px;
+            background: rgba(10, 10, 10, 0.5);
+            z-index: 1000;
             box-sizing: border-box;
+            padding-left: 200px;
         }
-        .logo-container {
+
+        header .logo {
             display: flex;
             align-items: center;
+            gap: 80px;
         }
-        .logo-image {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+            max-width: 100%;
+            gap: 40px;
+            margin-left: 40px;
         }
-        .logo-text {
-            font-size: 1.2rem;
-            font-weight: bold;
-            font-family: 'Sansation', Arial, sans-serif;
+
+        .nav-left {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-left a {
+            text-decoration: none;
+            color: #aaa;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-left a:hover {
+            color: #fff;
+        }
+
+        .try-btn {
+            border: 1px solid #fff;
+            border-radius: 20px;
+            padding: 6px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            background: transparent;
+            white-space: nowrap;
+            margin-right: 150px;
 
         }
-        .container {
+
+        .containerHome {
             position: relative;
             width: 100%;
             height: 100vh;
@@ -82,18 +111,14 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            background-color: #000000;
         }
-        .content {
-            position: absolute;
-            z-index: 10;
-            width: 100%;
-            text-align: center;
+        
+        .containerHome .content {
+        position: relative;
+        z-index: 3;
         }
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            animation: neon 10s infinite alternate;
-        }
+
         .slogan {
             font-size: 1.5rem;
             line-height: 1.5;
@@ -102,6 +127,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
         .video-wrapper {
             position: absolute;
             top: 0;
@@ -113,6 +139,7 @@
             align-items: center;
             z-index: 1;
         }
+        
         #videoBackground {
             width: 80%;
             max-width: 800px;
@@ -120,6 +147,7 @@
             object-fit: cover;
             border-radius: 10px;
         }
+
         .overlay {
             position: absolute;
             top: 0;
@@ -129,128 +157,519 @@
             background-color: rgba(0,0,0,0.5);
             z-index: 2;
         }
-				.footer {
-									position: fixed;
-									bottom: 0;
-									left: 0;
-									width: 100%;
-									padding: 15px 20px;
-									background-color: rgba(0,0,0,0.7);
-									display: flex;
-									align-items: center;
-									justify-content: center;
-									z-index: 10;
-							}
+        .spacer {
+            height: 100px;
+        }
 
-			.social-icons {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					gap: 20px;
-					flex-grow: 1;
-			}
+        .container {
+            display: flex;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 80vh;
+        }
 
-			.social-icons a {
-					color: white;
-					font-size: 1.2rem;
-					text-decoration: none;
-					transition: color 0.3s ease;
-			}
+        .cardAboutUs {
+            background-color: #0a0a0a;
+            border: none;
+            border-radius: 0;
+            padding: 30px;
+            flex: 1;
+            position: relative;
+            transition: background-color 0.3s ease, border-color 0.3s ease, border 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+                }
 
-			.social-icons a:hover {
-					color: #00ffff;
-			}
+        .cardAboutUs::before, .cardAboutUs::after, .cardAboutUs span {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-			.copyright {
-					position: absolute;
-					right: 20px;
-					bottom: 10px; /* Adicionado para evitar que fique colado ao topo */
-					font-size: 12px;
-					color: #ccc;
-					margin-right: 30px; /* Corrigido: adicionado 'px' para a margem funcionar */
-					
-			}
+        .cardAboutUs::before {
+            top: -1px;
+            left: -1px;
+        }
 
-			.new-section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 50px 0;
+        .cardAboutUs::after {
+            top: -1px;
+            right: -1px;
+        }
+
+        .cardAboutUs span:nth-child(1) {
+            bottom: -1px;
+            left: -1px;
+        }
+
+        .cardAboutUs span:nth-child(2) {
+            bottom: -1px;
+            right: -1px;
+        }
+
+        .cardAboutUs:hover {
+            background-color: #121212;
+        }
+
+        .cardAboutUs:hover::before,
+        .cardAboutUs:hover::after,
+        .cardAboutUs:hover span {
+            opacity: 1;
+        }
+
+        .cardAboutUs h2 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .cardAboutUs p {
+            color: #999;
+            margin-bottom: 25px;
+        }
+
+        .cardAboutUs a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            transition: border 0.3s ease;
+        }
+
+        .cardAboutUs a:hover {
+            border-color: #fff;
+        }
+
+        .card {
+            background-color: #0a0a0a;
+            border-left: 0.5px solid #ffffff30;
+            border-top: 0;
+            border-right: 0;
+            border-bottom: 0;
+            border-radius: 0;
+            padding: 30px;
+            flex: 1;
+            position: relative;
+            transition: background-color 0.3s ease, border-color 0.3s ease, border 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: justify;
+        }
+
+        .card::before, .card::after, .card span {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card::before {
+            top: -1px;
+            left: -1px;
+        }
+
+        .card::after {
+            top: -1px;
+            right: -1px;
+        }
+
+        .card span:nth-child(1) {
+            bottom: -1px;
+            left: -1px;
+        }
+
+        .card span:nth-child(2) {
+            bottom: -1px;
+            right: -1px;
+        }
+
+        .card:hover {
+            background-color: #121212;
+            border: 0.5px solid #ffffff90;
+        }
+
+        .card:hover::before,
+        .card:hover::after,
+        .card:hover span {
+            opacity: 1;
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #999;
+            margin-bottom: 25px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            transition: border 0.3s ease;
+        }
+
+        .card a:hover {
+            border-color: #fff;
+        }
+
+        .news-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .news-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 0.5px solid #ffffff30;
+            padding: 30px 0;
+        }
+
+        .news-card-content {
+            max-width: 60%;
+        }
+
+        .news-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .news-card p {
+            color: #aaa;
+        }
+
+        .news-card .read-btn {
+            border: 1px solid #fff;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            background: transparent;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .news-card .label {
+            font-size: 11px;
+            color: #777;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .news-card img {
+            max-width: 300px;
+            border-radius: 6px;
+        }
+
+        .footer {
+            position: relative;
+            padding: 35px 20px;
+            background-color: var(--background-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icons a:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .try-btn {
+    text-decoration: none; /* tira o sublinhado */
 }
 
-.section-content {
-    width: 100%;
-    max-width: 1400px;
+.containerAboutUs {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 190px;
-}
-
-/* Removi o background e efeitos da caixa cinza */
-.image-container {
-    width: 100%;
+    gap: 0;
     max-width: 1200px;
-    display: block;
     margin: 0 auto;
+    height: 80vh;
+    text-align: justify;
 }
 
-.section-image {
-    max-width: 60%;
-    max-height: 100vh;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
+.cardAboutUs {
+    background-color: #0a0a0a;
+    /* TIREI apenas o border-left */
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: 0;
+    padding: 30px;
+    flex: 1;
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease, border 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cardAboutUs::before, .cardAboutUs::after, .cardAboutUs span {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cardAboutUs::before {
+    top: -1px;
+    left: -1px;
+}
+
+.cardAboutUs::after {
+    top: -1px;
+    right: -1px;
+}
+
+.cardAboutUs span:nth-child(1) {
+    bottom: -1px;
+    left: -1px;
+}
+
+.cardAboutUs span:nth-child(2) {
+    bottom: -1px;
+    right: -1px;
+}
+
+.cardAboutUs:hover {
+    background-color: #121212;
+    border: 0.5px solid #ffffff90; /* Aparece borda em todos os lados no hover */
+}
+
+
+.cardAboutUs:hover::before,
+.cardAboutUs:hover::after,
+.cardAboutUs:hover span {
+    opacity: 1;
+}
+
+.cardAboutUs h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.cardAboutUs p {
+    color: #999;
+    margin-bottom: 25px;
+}
+
+.cardAboutUs a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #333;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    transition: border 0.3s ease;
+}
+
+.cardAboutUs a:hover {
+    border-color: #fff;
+}
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 100px;
+    left: 200px; /* Alinha no canto direito! */
+    z-index: 10;
+    cursor: default;
+}
+
+.scroll-down i {
+    font-size: 20px;
+    color: #ffffffcc; /* branco 80% opacidade */
 }
 
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
 </head>
 <body>
-	<div class="top-bar">
-			<div class="logo-container">
-					<img src="logo.svg" alt="Logo" class="logo-image">
-					<div class="logo-text">SINGULARITYA</div>
-			</div>
-	</div>
 
-	<div class="container">
-			<div class="content">
-					<p class="slogan">
-							Conversational AI for Everyone.
-					</p>
-			</div>
-			
-			<div class="video-wrapper">
-					<video autoplay muted loop id="videoBackground" playsinline>
-							<source src="background.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-					</video>
-			</div>
-			<div class="overlay"></div>
-	</div>
-
-	<div class="new-section">
-    <div class="section-content">
-        <div class="image-container">
-            <img src="banner.png" alt="Singularitya AI Image" class="section-image">
+<header>
+    <div class="logo">
+        <span>SINGULARITYA</span>
+    </div>
+    <div class="nav-wrapper">
+        <div class="nav-left">
+            <a href="#about">About Us</a>
+            <a href="#products">Products</a>
+            <a href="#contact">News</a>
         </div>
+        <div style="flex-shrink: 0;">
+            <a href="https://wa.me/+5511913071030" target="_blank" class="try-btn">TRY</a>
+        </div>
+    </div>
+</header>
+
+<div id="home" class="containerHome">
+    <div class="content">
+        <p class="slogan">
+            Conversational AI for Everyone.
+        </p>
+    </div>
+    <div class="scroll-down">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffffcc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+    </div> 
+<div class="video-wrapper">
+    <video autoplay muted loop id="videoBackground" playsinline>
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<div class="overlay"></div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- 
+<div class="containerAboutus">
+    <div class="cardAboutus">
+        <span></span>
+        <span></span>
+        <h2>Abou Us</h2>
+        <p>Somos especialistas em transformar WhatsApp e Telegram em ferramentas de produtividade com inteligência artificial. Permitimos que pessoas e empresas criem assistentes virtuais configuráveis, sem precisar de plataformas externas ou conhecimento técnico. Nosso objetivo é integrar IA no dia a dia, promovendo uma colaboração eficiente entre humanos e tecnologia.</p>
+         <a href="#">LEARN MORE ↗</a>
+    </div>
+</div>
+-->
+
+<!-- About Us Section -->
+<div id="about" class="containerAboutUs">
+    <div class="cardAboutUs">
+        <h2>About Us</h2>
+        <p>We specialize in transforming WhatsApp and Telegram into productivity tools powered by artificial intelligence. We enable individuals and businesses to create configurable virtual assistants without the need for external platforms or technical knowledge. Our goal is to integrate AI into daily life, fostering efficient collaboration between humans and technology.</p>
+        <a href="#products">Learn More</a>
+    </div>
+    <div class="cardAboutUs">
+        <h2></h2>
+        <p></p>
+    <!-- <a href="#">Learn More</a> -->
     </div>
 </div>
 
-	<footer class="footer">
-			<div class="social-icons">
-					<a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-					<a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-					<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-					<a href="#" target="_blank"><i class="fab fa-discord"></i></a>
-					<a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-			</div>
-			<p class="copyright">© 2025 <strong>Singularitya</strong>, All rights reserved.</p>
-	</footer>
+
+<!-- Products Section -->
+<div id="products" class="container">
+    <div class="card">
+        <span></span>
+        <span></span>
+        <h2>Personal Assistants</h2>
+        <p>Simplify your daily routine with our intelligent assistants that manage appointments, respond to messages, and organize your priority tasks in a personalized way.</p>
+        <a href="#">USE NOW ↗</a>
+    </div>
+
+    <div class="card">
+        <span></span>
+        <span></span>
+        <h2>Corporate Agent</h2>
+        <p>Unify your team under a single number, centralize communications, and automate workflows to boost your team's productivity and collaboration.</p>
+        <a href="#">BUILD NOW ↗</a>
+    </div>
+
+    <div class="card">
+        <span></span>
+        <span></span>
+        <h2>Fitness Agent</h2>
+        <p>Estimate and track the calorie content of meals from photos, request personalized recipes based on your nutrition plan, and stay on course with your health goals.</p>
+        <a href="#">LEARN MORE ↗</a>
+    </div>
+</div>
+
+<!-- News Section -->
+<div id="contact" class="news-section">
+    <div class="news-card">
+        <div class="news-card-content">
+            <small>April 29, 2025</small>
+            <h3>Suporte a Áudio, Documentos e Imagens.</h3>
+            <p>"Agora os assistentes podem compreender e responder a áudios, imagens e documentos, ampliando significativamente suas capacidades de interação.</p>
+            <div class="label">New Feature</div>
+            <button class="read-btn">READ</button>
+        </div>
+        <img src="banner1.webp" alt="Visão Computacional" style="max-width: 15%; height: auto;">
+    </div>
+
+
+<footer class="footer">
+    <div class="social-icons">
+        <a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p class="copyright">© 2025 <strong>Singularitya</strong>, All rights reserved.</p>
+</footer>
+    <!-- JavaScript para rolagem suave e efeitos -->
+    <script>
+
+</script>
 </body>
+</html>

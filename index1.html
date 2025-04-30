@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Singularitya</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        @keyframes neon {
+            0% {
+                text-shadow: 0 0 5px #070707, 0 0 10px #cccccc, 0 0 20px #cccccc, 0 0 40px #ffffff, 0 0 80px #ffffff;
+                color: #cccccc;
+            }
+            25% {
+                text-shadow: 0 0 5px #bbbbbb, 0 0 10px #bbbbbb, 0 0 20px #bbbbbb, 0 0 40px #eeeeee, 0 0 80px #eeeeee;
+                color: #bbbbbb;
+            }
+            50% {
+                text-shadow: 0 0 5px #aaaaaa, 0 0 10px #aaaaaa, 0 0 20px #aaaaaa, 0 0 40px #dddddd, 0 0 80px #dddddd;
+                color: #aaaaaa;
+            }
+            75% {
+                text-shadow: 0 0 5px #999999, 0 0 10px #999999, 0 0 20px #999999, 0 0 40px #cccccc, 0 0 80px #cccccc;
+                color: #999999;
+            }
+            100% {
+                text-shadow: 0 0 5px #cccccc, 0 0 10px #cccccc, 0 0 20px #cccccc, 0 0 40px #ffffff, 0 0 80px #ffffff;
+                color: #cccccc;
+            }
+        }
+        :root {
+            --primary-color: #f0f0f0;
+            --secondary-color: #444;
+            --accent-color: #ffffff;
+            --background-dark: #000000;
+            --background-darker: #0a0a0a;
+            --card-bg: rgba(40, 40, 40, 0.5);
+            --gradient-start: #000;
+            --gradient-end: #111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: var(--background-dark);
+            color: var(--primary-color);
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .nav-links {
+                margin-top: 10px;
+                gap: 10px;
+            }
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .containerHome {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .content {
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            animation: neon 10s infinite alternate;
+        }
+        .slogan {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            animation: neon 10s infinite alternate;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        #videoBackground {
+            width: 80%;
+            max-width: 800px;
+            max-height: 80%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+
+        .about-section, .contact-section {
+            position: relative;
+            background: var(--background-darker);
+            padding: 120px 0;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .about-section::before, .contact-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(40, 40, 40, 0.4), transparent 70%);
+            pointer-events: none;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            background: linear-gradient(90deg, #fff, #999);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+        }
+
+        .about-container, .contact-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .about-text p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .contact-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .feature {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature i {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #777);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.8;
+        }
+
+        .contact-cta {
+            text-align: center;
+            padding: 50px 30px;
+            border-radius: 16px;
+            background: var(--card-bg);
+            margin-top: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            line-height: 1.3;
+            background: linear-gradient(90deg, #fff, #bbb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-cta p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.85;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-button:hover::before {
+            left: 100%;
+        }
+
+        .whatsapp-button i {
+            margin-right: 10px;
+        }
+
+        .footer {
+            position: relative;
+            padding: 40px 20px;
+            background-color: var(--background-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icons a:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Efeitos de partículas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .slogan {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .slogan {
+                font-size: 1.3rem;
+            }
+            
+            .about-text p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 40px;
+            }
+            
+            .contact-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-cta h3 {
+                font-size: 1.5rem;
+            }
+            
+            .contact-cta p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .slogan {
+                font-size: 1.1rem;
+            }
+            
+            .about-section, .contact-section {
+                padding: 80px 0;
+            }
+            
+            .about-container, .contact-container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Logo" class="logo-image">
+            <div class="logo-text">SINGULARITYA</div>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">Sobre nós</a>
+            <a href="#contact">Contato</a>
+        </div>
+    </div>
+
+    <div id="home" class="container">
+        <div class="content">
+            <p class="slogan">
+                Conversational AI for Everyone.
+            </p>
+        </div>
+        
+        <div class="video-wrapper">
+            <video autoplay muted loop id="videoBackground" playsinline>
+                <source src="background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="overlay"></div>
+    </div>
+
+    <!-- About Us Section -->
+    <div id="about" class="about-section">
+        <div class="about-container">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="about-text">
+                <p>Somos especialistas em transformar plataformas de conversação como WhatsApp e Telegram em uma poderosa 
+                    ferramenta para produtividade.
+                   Nossa missão é democratizar o acesso à inteligência artificial, permitindo que pessoas e empresas de todos os portes 
+                   integrem agentes de IA personalizados diretamente no WhatsApp.</p>
+                <p>Nossa solução que permite criar assistentes e colaboradores virtuais totalmente configuráveis diretamente
+                     dentro do próprio WhatsApp, sem necessidade de plataformas externas. Estes assistentes são capazes de 
+                     executar tarefas, centralizar comunicações e automatizar processos. Nossa abordagem inovadora permite que 
+                     qualquer empresa implemente soluções de IA avançadas sem necessidade de conhecimento técnico especializado ou infraestrutura adicional.</p>
+                <p>Acreditamos que o futuro do trabalho está na colaboração perfeita entre humanos e IA, e construímos 
+                    ferramentas que tornam essa visão acessível hoje mesmo, diretamente no canal de comunicação que você já 
+                    utiliza.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Contact Section -->
+    <div id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="section-title">IA no WhatsApp para sua Empresa</h2>
+            <div class="contact-features">
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Equipe Conectada</h3>
+                    <p>Centralize toda a comunicação da sua empresa em um único número de WhatsApp, permitindo que múltiplos departamentos colaborem sem confusão ou redundância.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-robot"></i>
+                    <h3>Assistente IA Personalizado</h3>
+                    <p>Implemente assistentes de IA que aprendem com seus processos internos, documentos e fluxos de trabalho para fornecer suporte específico para seu negócio.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Configuração Sem Código</h3>
+                    <p>Configure comportamentos complexos de IA diretamente pelo chat, sem programação ou conhecimento técnico - tão simples quanto conversar.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Gestão Inteligente de Documentos</h3>
+                    <p>Extraia dados, gere resumos e automatize processos documentais com nossa IA que entende e processa documentos como um funcionário humano.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Automação de Processos</h3>
+                    <p>Crie fluxos de trabalho automatizados para tarefas rotineiras como agendamentos, triagens, qualificação de leads e distribuição de informações.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Análise e Aprendizado Contínuo</h3>
+                    <p>Obtenha insights valiosos sobre interações e processos, enquanto nosso sistema aprende constantemente para melhorar seu desempenho e precisão.</p>
+                </div>
+            </div>
+            <div class="contact-cta">
+                <h3>Transforme seu WhatsApp em um hub de produtividade com colaboradores virtuais alimentados por IA</h3>
+                <p>Nossa plataforma permite que você integre assistentes de IA altamente personalizados ao WhatsApp de sua empresa, automatizando tarefas, centralizando comunicações e transformando processos. Sem códigos, sem complexidade técnica - apenas resultados imediatos que escalam conforme sua necessidade.</p>
+                <a href="https://wa.me/+5511913071030" class="whatsapp-button">
+                    <i class="fab fa-whatsapp"></i> Experimente
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">© 2025 <strong>Singularitya</strong>, All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript para rolagem suave e efeitos -->
+    <script>
+        // Rolagem suave
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Iniciar efeitos quando o DOM estiver carregado
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
+
+        // Adicionar animação de rolagem
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            
+            // Fazer com que a barra de navegação mude conforme a rolagem
+            if (scrollPosition > 100) {     
+                document.querySelector('.top-bar').style.padding = '15px 40px';
+                document.querySelector('.top-bar').style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                document.querySelector('.top-bar').style.padding = '20px 40px';
+                document.querySelector('.top-bar').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            }
+            
+            // Animação para elementos que entram na tela
+            document.querySelectorAll('.feature, .about-text p').forEach(item => {
+                const itemPosition = item.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (itemPosition < screenPosition) {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        // Animação para o título principal quando a página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('h1').style.opacity = '1';
+                document.querySelector('h1').style.transform = 'translateY(0)';
+            }, 300);
+            
+            setTimeout(() => {
+                document.querySelector('.slogan').style.opacity = '1';
+                document.querySelector('.slogan').style.transform = 'translateY(0)';
+            }, 600);
+        });
+
+        // Adicionar estilos iniciais para a animação do carregamento
+        document.querySelector('h1').style.opacity = '0';
+        document.querySelector('h1').style.transform = 'translateY(20px)';
+        document.querySelector('h1').style.transition = 'opacity 1s ease, transform 1s ease';
+        document.querySelector('.slogan').style.opacity = '0';
+        document.querySelector('.slogan').style.transform = 'translateY(20px)';
+        document.querySelector('.slogan').style.transition = 'opacity 1s ease, transform 1s ease';
+    </script>
+</body>
+</html>
